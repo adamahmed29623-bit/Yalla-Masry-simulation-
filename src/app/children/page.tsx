@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 // التصحيح: الخروج من app/children والذهاب لـ components مباشرة
-import PharaohAvatar from '../../components/pharaoavatar';
+import PharaohAvatar from '@/components/pharaohavatar';
+import '@/app/globals.css';
 import PharaohGame from '../../components/pharaohgame';
 
 export default function ChildrenPage() {
