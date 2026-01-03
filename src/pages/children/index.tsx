@@ -1,6 +1,5 @@
 'use client';
-import PharaohAvatar from '../../components/PharaohAvatar';
-import PharaohGame from '../../components/PharaohGame';
+import PharaohAvatar from '@/components/ph/PharaohAvatar';
 
 export default function ChildrenPage() {
   return (
