@@ -1,6 +1,8 @@
 'use client';
-// التغيير هنا: نخرج مرتين ثم ندخل components ثم ph
-import PharaohGame from '../../components/ph/pharaohgame'; 
+import React from 'react';
+// المسار الصحيح للخروج من المجلدات والوصول للمكونات
+import PharaohAvatar from '../../components/ph/pharaoavatar';
+import PharaohGame from '../../components/ph/pharaohgame';
 
 export default function ChildrenPage() {
   return (
