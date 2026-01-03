@@ -1,6 +1,5 @@
 'use client';
-import PharaohAvatar from '../../components/PharaohAvatar';
-import PharaohStory from '../../components/PharaohStory';
+import PharaohAvatar from '@/components/ph/PharaohAvatar';
 
 export default function AdultsPage() {
   return (
