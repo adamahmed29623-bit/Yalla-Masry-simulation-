@@ -1,10 +1,10 @@
-'use client'; // السطر 1: ضروري جداً لبيئة Next.js والـ 3D
-import React from 'react'; // السطر 2: لضمان استقرار المكون
-import { Canvas } from '@react-three/fiber'; // السطر 3: محرك الرسوميات
-import { OrbitControls, Stars, Float } from '@react-three/drei'; // السطر 4: المؤثرات الملكية
+'use client'; // السطر 1: مفتاح التشغيل في المتصفح
+import React from 'react'; // السطر 2: استدعاء ريأكت الأساسي
+import { Canvas } from '@react-three/fiber'; // السطر 3: محرك الرسوميات الثلاثي
+import { OrbitControls, Stars, Float } from '@react-three/drei'; // السطر 4: المؤثرات البصرية الملكية
 
-export default function PharaohWorld() { // السطر 5: بداية بوابة العالم الثالث
-  return (
+export default function PharaohWorld() { // السطر 5: بداية الدالة الملكية
+  return ( // السطر 6: بداية رسم المشهد الملكي
     <div className="h-[500px] w-full bg-slate-950 rounded-[2rem] overflow-hidden shadow-[0_0_50px_rgba(212,175,55,0.2)] border-2 border-yellow-600/30 relative">
       
       {/* عنوان داخلي فخم */}
