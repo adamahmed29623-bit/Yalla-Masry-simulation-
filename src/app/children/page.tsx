@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-// المسار الصحيح للخروج من المجلدات والوصول للمكونات
-import PharaohAvatar from '../../components/ph/pharaoavatar';
-import PharaohGame from '../../components/ph/pharaohgame';
+// استخدام المسار المباشر (Alias) الذي يفهمه Next.js تلقائياً
+import PharaohAvatar from '@/components/ph/pharaoavatar';
+import PharaohGame from '@/components/ph/pharaohgame';
 
 export default function ChildrenPage() {
   return (
