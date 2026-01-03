@@ -1,13 +1,14 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
-// استيراد المكونات من المسار الجديد الذي حددتيه
-import PharaohAvatar from '../../components/ph/PharaohAvatar';
-import PharaohStory from '../../components/ph/PharaohStory';
+// التصحيح الملكي: الخروج من app/adults والوصول للمكونات في المجلد الرئيسي
+import PharaohAvatar from '../../components/pharaoavatar';
+import PharaohStory from '../../components/pharaohstory'; // تأكدي أن الملف اسمه pharaohstory.tsx بحروف صغيرة
 
 export default function AdultsPage() {
   return (
     <div className="min-h-screen bg-[#fcf9f1] text-slate-900 p-6 md:p-12 font-serif" dir="rtl">
+      {/* باقي الكود كما هو... */}
       {/* شريط علوي بسيط للفخامة */}
       <header className="max-w-4xl mx-auto flex justify-between items-center mb-16 border-b border-amber-200 pb-6">
         <div>
