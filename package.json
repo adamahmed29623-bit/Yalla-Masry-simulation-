@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "three": "^0.160.0",
     "@react-three/fiber": "^8.15.11",
     "@react-three/drei": "^9.89.0",
@@ -19,10 +19,10 @@
     "lucide-react": "latest"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "@types/node": "latest",
-    "@types/react": "latest",
-    "@types/react-dom": "latest",
+    "typescript": "5.3.3",
+    "@types/node": "20.11.0",
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0",
     "@types/three": "^0.160.0",
     "autoprefixer": "latest",
     "postcss": "latest",
