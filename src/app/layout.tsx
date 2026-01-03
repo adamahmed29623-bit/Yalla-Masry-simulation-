@@ -1,5 +1,5 @@
 
-import '../app/globals.css';
+import '@/app/globals.css';
 
 
 const inter = Inter({ subsets: ['latin'] });
