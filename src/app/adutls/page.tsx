@@ -2,8 +2,9 @@
 import React from 'react';
 import Link from 'next/link';
 // التصحيح الملكي: الخروج من app/adults والوصول للمكونات في المجلد الرئيسي
-import PharaohAvatar from '../../components/pharaoavatar';
+import PharaohAvatar from '../../components/pharaohavatar';
 import PharaohStory from '../../components/pharaohstory'; // تأكدي أن الملف اسمه pharaohstory.tsx بحروف صغيرة
+import '@/app/globals.css';
 
 export default function AdultsPage() {
   return (
