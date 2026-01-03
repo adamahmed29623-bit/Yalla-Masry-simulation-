@@ -1,7 +1,6 @@
 'use client';
 // التغيير هنا: نخرج مرتين ثم ندخل components ثم ph
-import PharaohAvatar from '../../components/ph/PharaohAvatar';
-import PharaohGame from '../../components/ph/PharaohGame';
+import PharaohGame from '../../components/ph/pharaohgame'; 
 
 export default function ChildrenPage() {
   return (
