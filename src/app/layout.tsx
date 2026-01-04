@@ -1,6 +1,6 @@
 import React from 'react';
 // استخدام @ يضمن الوصول لملف التنسيق في مجلد app مباشرة
-import './globals.css'; 
+//import './globals.css'; 
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] });
