@@ -1,60 +1,61 @@
+
 'use client';
 import React, { useState } from 'react';
 
-export default function YallaMasryAcademy() {
+export default function ImperialAcademy() {
   const [activeTab, setActiveTab] = useState('challenges');
-  const [score, setScore] = useState(0);
+  const [feedback, setFeedback] = useState('');
 
-  const handleChallenge = (isCorrect: boolean) => {
-    if (isCorrect) {
-      setScore(score + 10);
-      alert('🏰 أحسنتِ يا جلالة الملكة! إجابة ملكية صحيحة (+10 نقاط)');
+  const checkAnswer = (correct: boolean) => {
+    if (correct) {
+      setFeedback('🏰 أحسنتِ يا جلالة الملكة! إجابة ملكية صحيحة');
     } else {
-      alert('⚠️ حاول مرة أخرى، اللهجة المصرية تحتاج دقة ملكية');
+      setFeedback('⚠️ المحاولة فخر للملكات، جربي مرة أخرى بدقة');
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#050a15] text-white p-8">
-      {/* رأس الصفحة - يطابق رؤية نفرتيتي */}
-      <header className="text-center border-b border-amber-500/20 pb-6 mb-10">
-        <h1 className="text-4xl font-black text-amber-500 mb-2">أكاديمية يالا مصري 🏺</h1>
-        <p className="text-slate-400 font-bold">لوحة التحكم الإمبراطورية للملكة نفرتيتي</p>
-        <div className="mt-4 inline-block bg-amber-500/10 px-6 py-2 rounded-full border border-amber-500/50">
-          <span className="text-amber-500 font-bold">نقاط الخبرة: {score} XP 🪙</span>
-        </div>
+    <div style={{ backgroundColor: '#050a15', color: 'white', minHeight: '100vh', padding: '40px 20px', textAlign: 'center' }}>
+      
+      {/* عنوان الأكاديمية - الهوية الإمبراطورية */}
+      <header style={{ marginBottom: '50px' }}>
+        <h1 style={{ color: '#f59e0b', fontSize: '3rem', margin: 0 }}>أكاديمية يالا مصري</h1>
+        <p style={{ opacity: 0.7 }}>إشراف الملكة نفرتيتي</p>
       </header>
 
-      {/* أزرار التنقل - تعمل الآن! */}
-      <nav className="flex justify-center gap-4 mb-12">
-        <button onClick={() => setActiveTab('challenges')} className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'challenges' ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'bg-slate-900 text-amber-500'}`}>
-          ⚔️ التحديات
+      {/* أزرار التحكم - تعمل باللمس والضغط */}
+      <div style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '40px' }}>
+        <button onClick={() => {setActiveTab('challenges'); setFeedback('');}} 
+          style={{ padding: '15px 30px', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold', backgroundColor: activeTab === 'challenges' ? '#f59e0b' : '#1e293b', color: activeTab === 'challenges' ? 'black' : 'white' }}>
+          ⚔️ التحديات الملكية
         </button>
-        <button onClick={() => setActiveTab('lessons')} className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'lessons' ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'bg-slate-900 text-amber-500'}`}>
+        <button onClick={() => {setActiveTab('lessons'); setFeedback('');}} 
+          style={{ padding: '15px 30px', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold', backgroundColor: activeTab === 'lessons' ? '#f59e0b' : '#1e293b', color: activeTab === 'lessons' ? 'black' : 'white' }}>
           📖 قاعة الدروس
         </button>
-      </nav>
+      </div>
 
-      {/* محتوى التحديات الملكي */}
+      {/* منطقة التحديات - كما في الصور */}
       {activeTab === 'challenges' && (
-        <div className="max-w-2xl mx-auto bg-[#0a0f1a] p-10 rounded-[3rem] border-2 border-amber-500/10 shadow-2xl text-center">
-          <h2 className="text-2xl font-bold mb-6 italic underline decoration-amber-500">تحدي ميدان التحرير 🚕</h2>
-          <p className="text-xl mb-8 font-medium">"أنا عايز اروح ميدان التحرير"</p>
-          <div className="grid gap-4">
-            <button onClick={() => handleChallenge(false)} className="p-5 bg-slate-800 rounded-2xl hover:bg-slate-700 transition-all font-bold italic">1. انا عايز الفندق</button>
-            <button onClick={() => handleChallenge(true)} className="p-5 bg-amber-500 text-black rounded-2xl hover:scale-105 transition-all font-black">2. انا عايز اروح الفندق</button>
+        <div style={{ maxWidth: '600px', margin: '0 auto', backgroundColor: '#0f172a', padding: '40px', borderRadius: '40px', border: '2px solid rgba(245,158,11,0.2)' }}>
+          <h2 style={{ color: '#f59e0b' }}>تحدي السفر: ميدان التحرير 🚕</h2>
+          <p style={{ fontSize: '1.5rem', margin: '20px 0' }}>"أنا عايز اروح ميدان التحرير"</p>
+          <div style={{ display: 'grid', gap: '15px' }}>
+            <button onClick={() => checkAnswer(false)} style={{ padding: '15px', borderRadius: '15px', border: '1px solid #334155', background: 'none', color: 'white', cursor: 'pointer' }}>1. انا عايز الفندق</button>
+            <button onClick={() => checkAnswer(true)} style={{ padding: '15px', borderRadius: '15px', border: 'none', background: '#f59e0b', color: 'black', cursor: 'pointer', fontWeight: '900' }}>2. انا عايز اروح الفندق</button>
           </div>
+          {feedback && <p style={{ marginTop: '20px', color: feedback.includes('أحسنت') ? '#4ade80' : '#f87171', fontWeight: 'bold' }}>{feedback}</p>}
         </div>
       )}
 
-      {/* محتوى الدروس - نظام الدردشة المبدئي */}
+      {/* قاعة الدروس - نظام الإطلاق المبدئي */}
       {activeTab === 'lessons' && (
-        <div className="max-w-3xl mx-auto bg-[#0a0f1a] p-12 rounded-[3rem] border border-white/5 text-center">
-           <h2 className="text-3xl font-black mb-4">قاعة الدروس الملكية</h2>
-           <p className="text-amber-500 font-bold animate-pulse">يتم الآن ربط "رحلة نفرتيتي" المحدثة بذكاء جميناي... 🤖</p>
-           <div className="mt-10 p-6 bg-white/5 rounded-2xl border border-white/5 italic text-slate-400">
-             "اللغة هي مرآة الروح، وعندما تتعلمي المصرية برقي، فأنتِ تعكسين للعالم جمال جوهركِ وثقافتكِ"
-           </div>
+        <div style={{ maxWidth: '700px', margin: '0 auto', padding: '50px', backgroundColor: '#0f172a', borderRadius: '40px' }}>
+          <h2 style={{ fontSize: '2.5rem' }}>قاعة الدروس الملكية</h2>
+          <p style={{ color: '#f59e0b' }}>يتم الآن تحميل "رحلة نفرتيتي" المحدثة بذكاء جميناي...</p>
+          <div style={{ height: '4px', background: '#1e293b', marginTop: '30px', borderRadius: '2px', overflow: 'hidden' }}>
+            <div style={{ width: '80%', height: '100%', background: '#f59e0b' }}></div>
+          </div>
         </div>
       )}
     </div>
