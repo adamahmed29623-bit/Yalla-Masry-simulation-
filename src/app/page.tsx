@@ -1,66 +1,74 @@
 'use client';
 import React, { useState } from 'react';
 
-export default function YallaMasryRealWorld() {
-  const [stage, setStage] = useState(1); // نظام المراحل الواقعية
-  const [xp, setXp] = useState(0);
+export default function YallaMasryLive() {
+  const [view, setView] = useState('challenges');
+  const [feedback, setFeedback] = useState('');
+
+  // دالة التعامل مع الإجابات (بداية ربط المنطق)
+  const handleAnswer = (isCorrect: boolean) => {
+    if (isCorrect) {
+      setFeedback('🏰 أحسنت يا بطل النيل! إجابة ملكية صحيحة');
+    } else {
+      setFeedback('⚠️ حاول مرة أخرى يا بطل، اللهجة المصرية تحتاج دقة');
+    }
+  };
 
   return (
     <div style={{ backgroundColor: '#050a15', color: 'white', minHeight: '100vh', fontFamily: 'sans-serif' }} dir="rtl">
       
-      {/* شريط الإنجاز الملكي */}
-      <header style={{ padding: '15px 30px', background: '#0a0f1a', borderBottom: '2px solid #f59e0b', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <div>
-          <h2 style={{ color: '#f59e0b', margin: 0, fontSize: '1.2rem' }}>أكاديمية يالا مصري 🏺</h2>
-        </div>
-        <div style={{ background: 'rgba(245,158,11,0.1)', padding: '5px 20px', borderRadius: '20px', border: '1px solid #f59e0b' }}>
-          <span style={{ fontWeight: 'bold' }}>رصيدك الملكي: {xp} XP 🪙</span>
+      {/* الهيدر الملكي */}
+      <header style={{ padding: '20px', borderBottom: '1px solid #f59e0b', backgroundColor: '#0a0f1a', textAlign: 'center' }}>
+        <h1 style={{ color: '#f59e0b', margin: 0 }}>محاكاة أكاديمية يالا مصري 🏺</h1>
+        <p style={{ fontSize: '12px', opacity: 0.7 }}>إعداد الملكة نفرتيتي</p>
+        
+        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '15px' }}>
+          <button onClick={() => { setView('challenges'); setFeedback(''); }} 
+                  style={{ padding: '12px 25px', borderRadius: '12px', cursor: 'pointer', border: 'none', backgroundColor: view === 'challenges' ? '#f59e0b' : '#1e293b', fontWeight: 'bold' }}>
+            ⚔️ التحديات المباشرة
+          </button>
+          <button onClick={() => { setView('lessons'); setFeedback(''); }} 
+                  style={{ padding: '12px 25px', borderRadius: '12px', cursor: 'pointer', border: 'none', backgroundColor: view === 'lessons' ? '#f59e0b' : '#1e293b', fontWeight: 'bold' }}>
+            📖 نظام الدروس
+          </button>
         </div>
       </header>
 
-      <main style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
+      <main style={{ maxWidth: '900px', margin: '40px auto', padding: '0 20px' }}>
         
-        {/* المرحلة الأولى: تحدي التاكسي (الواقعي) */}
-        {stage === 1 && (
-          <div className="animate-in fade-in">
-            <h3 style={{ textAlign: 'center', color: '#64748b' }}>الموقف الأول: الوصول للمطار 🚕</h3>
-            <div style={{ backgroundColor: '#0f172a', padding: '40px', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)', textAlign: 'center', marginTop: '20px' }}>
-              <p style={{ fontSize: '22px', marginBottom: '30px' }}>وصلت المطار وعايز تروح الفندق، هتقول إيه للسواق؟</p>
-              <div style={{ display: 'grid', gap: '15px' }}>
-                <button onClick={() => { setXp(xp + 10); setStage(2); }} style={{ padding: '20px', background: '#1e293b', color: 'white', border: 'none', borderRadius: '15px', cursor: 'pointer', fontWeight: 'bold' }}>
-                  "أنا عايز أروح الفندق" (الإجابة الملكية)
-                </button>
-                <button style={{ padding: '20px', background: '#111827', color: '#475569', border: '1px solid #1e293b', borderRadius: '15px' }}>
-                  "خدني أي حتة"
-                </button>
+        {view === 'challenges' && (
+          <div style={{ background: 'linear-gradient(to bottom, #1e293b, #0f172a)', padding: '40px', borderRadius: '40px', border: '1px solid rgba(245,158,11,0.3)', textAlign: 'center' }}>
+            <h2 style={{ color: '#f59e0b' }}>تحدي: ميدان التحرير 🚕</h2>
+            <p style={{ fontSize: '22px', fontWeight: 'bold' }}>"أنا عايز اروح ميدان التحرير"</p>
+            <p style={{ opacity: 0.6 }}>اطلب من السائق الذهاب للفندق بلهجة ملكية</p>
+
+            <div style={{ display: 'grid', gap: '15px', marginTop: '30px' }}>
+              <button onClick={() => handleAnswer(false)} style={{ padding: '20px', borderRadius: '15px', border: '1px solid #334155', backgroundColor: '#1e293b', color: 'white', cursor: 'pointer', fontSize: '18px' }}>
+                1. انا عايز الفندق
+              </button>
+              <button onClick={() => handleAnswer(true)} style={{ padding: '20px', borderRadius: '15px', border: 'none', backgroundColor: '#f59e0b', color: 'black', cursor: 'pointer', fontSize: '18px', fontWeight: 'black' }}>
+                2. انا عايز اروح الفندق
+              </button>
+            </div>
+
+            {feedback && (
+              <div style={{ marginTop: '30px', padding: '20px', borderRadius: '15px', backgroundColor: feedback.includes('أحسنت') ? 'rgba(34,197,94,0.1)' : 'rgba(239,68,68,0.1)', color: feedback.includes('أحسنت') ? '#4ade80' : '#f87171', fontWeight: 'bold', fontSize: '20px' }}>
+                {feedback}
               </div>
+            )}
+          </div>
+        )}
+
+        {view === 'lessons' && (
+          <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#0f172a', borderRadius: '40px', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <h2 style={{ fontSize: '45px', marginBottom: '10px' }}>قاعة الدروس</h2>
+            <p style={{ color: '#f59e0b', fontSize: '20px' }}>جاري ربط "رحلة نفرتيتي" بذكاء جميناي... 🤖</p>
+            <div style={{ width: '100%', height: '8px', background: '#1e293b', borderRadius: '10px', marginTop: '40px', overflow: 'hidden' }}>
+              <div style={{ width: '85%', height: '100%', background: 'linear-gradient(to right, #f59e0b, #fbbf24)', boxShadow: '0 0 20px #f59e0b' }}></div>
             </div>
           </div>
         )}
-
-        {/* المرحلة الثانية: الدخول لقاعة دروس المحاكاة */}
-        {stage === 2 && (
-          <div className="animate-in slide-in">
-             <div style={{ textAlign: 'center', padding: '50px', background: 'linear-gradient(180deg, #0f172a 0%, #050a15 100%)', borderRadius: '40px', border: '2px solid #f59e0b' }}>
-                <h2 style={{ fontSize: '35px', color: '#f59e0b' }}>قاعة دروس المحاكاة</h2>
-                <p style={{ fontSize: '18px', margin: '20px 0' }}>يتم الآن مزامنة "رحلة نفرتيتي" مع مواقف الواقع...</p>
-                
-                <div style={{ padding: '20px', background: 'rgba(34, 197, 94, 0.1)', borderRadius: '15px', border: '1px solid #22c55e', color: '#4ade80', marginBottom: '30px' }}>
-                   ✅ أحسنت! لقد عبرت الموقف بنجاح كأبن أصيل للنيل
-                </div>
-
-                <button onClick={() => setStage(1)} style={{ padding: '15px 40px', background: '#f59e0b', color: 'black', border: 'none', borderRadius: '15px', fontWeight: 'black', cursor: 'pointer' }}>
-                   الانتقال للموقف التالي ⬅️
-                </button>
-             </div>
-          </div>
-        )}
-
       </main>
-
-      <footer style={{ position: 'fixed', bottom: '20px', width: '100%', textAlign: 'center', opacity: 0.5 }}>
-        <p style={{ fontSize: '12px' }}>تمكين القيادة التعليمية في أكاديمية يالا مصري</p>
-      </footer>
     </div>
   );
 }
