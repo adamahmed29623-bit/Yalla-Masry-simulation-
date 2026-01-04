@@ -1,55 +1,57 @@
 'use client';
 import React, { useState } from 'react';
 
-export default function SimulationAcademy() {
-  const [activeTab, setActiveTab] = useState('challenges');
+export default function RealitySimulation() {
+  const [stage, setStage] = useState('simulation_start');
 
   return (
-    <div style={{ backgroundColor: '#050a15', color: 'white', minHeight: '100vh', padding: '20px' }} dir="rtl">
-      {/* هيدر المحاكاة الملكي */}
-      <header style={{ textAlign: 'center', marginBottom: '40px', borderBottom: '2px solid #f59e0b' }}>
-        <h1 style={{ color: '#f59e0b', fontSize: '2.5rem' }}>محاكاة أكاديمية يالا مصري 🏺</h1>
-        <p style={{ opacity: 0.7 }}>إعداد الملكة نفرتيتي</p>
+    <div className="simulation-container" style={{ backgroundColor: '#050a15', color: 'white', minHeight: '100vh', padding: '20px', fontFamily: 'sans-serif' }} dir="rtl">
+      
+      {/* هيدر محاكاة الواقع - فخامة ملكية مستقلة */}
+      <header style={{ textAlign: 'center', padding: '30px', borderBottom: '1px solid #f59e0b' }}>
+        <h1 style={{ color: '#f59e0b', fontSize: '2.2rem', fontWeight: '900' }}>محاكاة الواقع المصري 🏺</h1>
+        <p style={{ color: '#64748b', fontWeight: 'bold' }}>الإصدار المستقل - برؤية الملكة نفرتيتي</p>
       </header>
 
-      {/* أزرار التنقل في المحاكاة */}
-      <nav style={{ display: 'flex', justifyContent: 'center', gap: '20px', marginBottom: '30px' }}>
-        <button onClick={() => setActiveTab('challenges')} style={{ padding: '15px 30px', borderRadius: '15px', border: 'none', backgroundColor: activeTab === 'challenges' ? '#f59e0b' : '#1e293b', fontWeight: 'bold', cursor: 'pointer' }}>
-          ⚔️ التحديات المباشرة
-        </button>
-        <button onClick={() => setActiveTab('lessons')} style={{ padding: '15px 30px', borderRadius: '15px', border: 'none', backgroundColor: activeTab === 'lessons' ? '#f59e0b' : '#1e293b', fontWeight: 'bold', cursor: 'pointer' }}>
-          📖 نظام الدروس
-        </button>
-      </nav>
-
-      <main style={{ maxWidth: '800px', margin: '0 auto' }}>
-        {/* قسم التحديات - كما في تخطيطك المسبق */}
-        {activeTab === 'challenges' && (
-          <div style={{ background: '#0f172a', padding: '30px', borderRadius: '25px', border: '1px solid rgba(245,158,11,0.3)' }}>
-            <h2 style={{ color: '#f59e0b' }}>تحدي: ميدان التحرير</h2>
-            <div style={{ margin: '20px 0', fontSize: '1.5rem', fontWeight: 'bold' }}>
-              "أنا عايز اروح ميدان التحرير"
-            </div>
-            <p style={{ color: '#64748b', marginBottom: '20px' }}>اطلب من السائق الذهاب للفندق بلهجة ملكية</p>
-            <div style={{ display: 'grid', gap: '10px' }}>
-              <button style={{ padding: '15px', borderRadius: '10px', background: '#1e293b', color: 'white', border: '1px solid #334155' }}>1. انا عايز الفندق</button>
-              <button style={{ padding: '15px', borderRadius: '10px', background: '#f59e0b', color: 'black', fontWeight: 'bold', border: 'none' }}>2. انا عايز اروح الفندق</button>
-            </div>
-            <p style={{ marginTop: '20px', color: '#4ade80', fontWeight: 'bold' }}>🏰 أحسنت يا بطل النيل!</p>
+      <main style={{ maxWidth: '900px', margin: '40px auto' }}>
+        
+        {/* نظام التحديات الواقعية */}
+        <section style={{ background: 'linear-gradient(145deg, #0f172a, #050a15)', padding: '40px', borderRadius: '40px', border: '1px solid rgba(245,158,11,0.2)', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }}>
+          
+          <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+            <span style={{ background: '#f59e0b', color: 'black', padding: '5px 15px', borderRadius: '20px', fontWeight: 'black', fontSize: '12px' }}>موقف حي: المواصلات</span>
+            <h2 style={{ marginTop: '15px', fontSize: '1.8rem' }}>أنت الآن أمام سائق تاكسي في القاهرة.. ماذا ستقول؟</h2>
           </div>
-        )}
 
-        {/* نظام الدروس - الهيكل المبدئي للإطلاق */}
-        {activeTab === 'lessons' && (
-          <div style={{ textAlign: 'center', background: '#0f172a', padding: '50px', borderRadius: '25px' }}>
-            <h2 style={{ fontSize: '2rem' }}>قاعة الدروس الملكية</h2>
-            <p style={{ color: '#f59e0b', fontSize: '1.2rem', marginTop: '20px' }}>يتم الآن تحميل "رحلة نفرتيتي" المحدثة...</p>
-            <div style={{ width: '100%', height: '5px', background: '#334155', borderRadius: '10px', marginTop: '30px', overflow: 'hidden' }}>
-              <div style={{ width: '80%', height: '100%', background: '#f59e0b' }}></div>
-            </div>
+          {/* محاكي الموقف */}
+          <div style={{ backgroundColor: 'rgba(255,255,255,0.02)', padding: '25px', borderRadius: '25px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '30px' }}>
+             <p style={{ fontSize: '1.4rem', textAlign: 'center', color: '#cbd5e1' }}>"أنا عايز أروح ميدان التحرير"</p>
+             <p style={{ textAlign: 'center', color: '#64748b', fontStyle: 'italic', marginTop: '5px' }}>I want to go to Tahrir Square</p>
           </div>
-        )}
+
+          {/* خيارات المحاكاة - بدون تشتيت */}
+          <div style={{ display: 'grid', gap: '15px' }}>
+            <button style={{ padding: '20px', borderRadius: '20px', border: '2px solid #1e293b', background: 'transparent', color: 'white', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}>1. أنا عايز الفندق</button>
+            <button style={{ padding: '20px', borderRadius: '20px', border: '2px solid #1e293b', background: 'transparent', color: 'white', fontWeight: 'bold', cursor: 'pointer', textAlign: 'right' }}>2. خدني الفندق</button>
+            <button style={{ padding: '20px', borderRadius: '20px', border: '2px solid #f59e0b', background: 'rgba(245,158,11,0.1)', color: '#f59e0b', fontWeight: 'black', cursor: 'pointer', textAlign: 'right' }}>3. أنا عايز أروح الفندق (الإجابة الملكية)</button>
+          </div>
+
+          <div style={{ marginTop: '30px', textAlign: 'center', color: '#4ade80', fontWeight: 'bold', fontSize: '1.2rem' }}>
+            🏰 أحسنت! لقد عبرت الموقف بنجاح كأبن أصيل للنيل
+          </div>
+        </section>
+
+        {/* قاعة دروس المحاكاة */}
+        <section style={{ marginTop: '40px', textAlign: 'center', opacity: 0.8 }}>
+          <h3 style={{ color: '#f59e0b' }}>قاعة دروس المحاكاة</h3>
+          <p>يتم الآن مزامنة "رحلة نفرتيتي" مع مواقف الواقع...</p>
+        </section>
+
       </main>
+
+      <footer style={{ marginTop: '60px', textAlign: 'center', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '20px', color: '#334155' }}>
+        مشروع محاكاة الواقع - v2.0 الملكي
+      </footer>
     </div>
   );
 }
