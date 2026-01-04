@@ -1,85 +1,62 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
-export default function YallaMasryLive() {
-  // حالات التحكم في الحركة والتفاعل
-  const [view, setView] = useState('challenges');
-  const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [isMounted, setIsMounted] = useState(false);
+export default function YallaMasryAcademy() {
+  const [activeTab, setActiveTab] = useState('challenges');
+  const [score, setScore] = useState(0);
 
-  // التأكد من أن الصفحة تعمل بالكامل قبل بدء التفاعل
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) return null;
+  const handleChallenge = (isCorrect: boolean) => {
+    if (isCorrect) {
+      setScore(score + 10);
+      alert('🏰 أحسنتِ يا جلالة الملكة! إجابة ملكية صحيحة (+10 نقاط)');
+    } else {
+      alert('⚠️ حاول مرة أخرى، اللهجة المصرية تحتاج دقة ملكية');
+    }
+  };
 
   return (
-    <div style={{ backgroundColor: '#050a15', color: 'white', minHeight: '100vh', fontFamily: 'Arial, sans-serif' }} dir="rtl">
-      
-      {/* 1. رأس الصفحة (Navigation) */}
-      <header style={{ padding: '25px', borderBottom: '2px solid #f59e0b', backgroundColor: '#0a0f1a', textAlign: 'center', boxShadow: '0 4px 20px rgba(0,0,0,0.5)' }}>
-        <h1 style={{ color: '#f59e0b', margin: '0 0 15px 0', fontSize: '28px' }}>أكاديمية يالا مصري 🏺</h1>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-          <button 
-            onClick={() => { setView('challenges'); setSelectedAnswer(null); }}
-            style={{ padding: '12px 20px', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px', transition: '0.3s', backgroundColor: view === 'challenges' ? '#f59e0b' : '#1e293b', color: view === 'challenges' ? 'black' : 'white' }}>
-            ⚔️ التحديات
-          </button>
-          <button 
-            onClick={() => { setView('lessons'); setSelectedAnswer(null); }}
-            style={{ padding: '12px 20px', borderRadius: '15px', border: 'none', cursor: 'pointer', fontWeight: 'bold', fontSize: '16px', transition: '0.3s', backgroundColor: view === 'lessons' ? '#f59e0b' : '#1e293b', color: view === 'lessons' ? 'black' : 'white' }}>
-            📖 الدروس
-          </button>
+    <div className="min-h-screen bg-[#050a15] text-white p-8">
+      {/* رأس الصفحة - يطابق رؤية نفرتيتي */}
+      <header className="text-center border-b border-amber-500/20 pb-6 mb-10">
+        <h1 className="text-4xl font-black text-amber-500 mb-2">أكاديمية يالا مصري 🏺</h1>
+        <p className="text-slate-400 font-bold">لوحة التحكم الإمبراطورية للملكة نفرتيتي</p>
+        <div className="mt-4 inline-block bg-amber-500/10 px-6 py-2 rounded-full border border-amber-500/50">
+          <span className="text-amber-500 font-bold">نقاط الخبرة: {score} XP 🪙</span>
         </div>
       </header>
 
-      {/* 2. المحتوى التفاعلي الرئيسي */}
-      <main style={{ maxWidth: '800px', margin: '40px auto', padding: '0 20px' }}>
-        
-        {/* قسم التحديات - منطق الاستجابة المباشر */}
-        {view === 'challenges' && (
-          <div style={{ backgroundColor: '#0f172a', padding: '40px', borderRadius: '35px', border: '1px solid rgba(245,158,11,0.2)', textAlign: 'center', animation: 'fadeIn 0.5s' }}>
-            <h2 style={{ color: '#f59e0b', marginBottom: '10px' }}>تحدي الميدان 🚕</h2>
-            <p style={{ fontSize: '20px', fontWeight: 'bold', color: '#cbd5e1' }}>"أنا عايز اروح ميدان التحرير"</p>
-            <p style={{ opacity: 0.7, fontSize: '14px', marginBottom: '30px' }}>اطلب من السائق الذهاب للفندق بلهجة ملكية</p>
+      {/* أزرار التنقل - تعمل الآن! */}
+      <nav className="flex justify-center gap-4 mb-12">
+        <button onClick={() => setActiveTab('challenges')} className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'challenges' ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'bg-slate-900 text-amber-500'}`}>
+          ⚔️ التحديات
+        </button>
+        <button onClick={() => setActiveTab('lessons')} className={`px-8 py-3 rounded-2xl font-bold transition-all ${activeTab === 'lessons' ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20' : 'bg-slate-900 text-amber-500'}`}>
+          📖 قاعة الدروس
+        </button>
+      </nav>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-              <button 
-                onClick={() => setSelectedAnswer(1)}
-                style={{ padding: '20px', borderRadius: '20px', border: selectedAnswer === 1 ? '2px solid #ef4444' : '1px solid #334155', backgroundColor: '#1e293b', color: 'white', cursor: 'pointer', fontSize: '18px', fontWeight: 'bold' }}>
-                1. انا عايز الفندق
-              </button>
-              
-              <button 
-                onClick={() => setSelectedAnswer(2)}
-                style={{ padding: '20px', borderRadius: '20px', border: selectedAnswer === 2 ? '2px solid #22c55e' : 'none', backgroundColor: '#f59e0b', color: 'black', cursor: 'pointer', fontSize: '18px', fontWeight: '900' }}>
-                2. انا عايز اروح الفندق
-              </button>
-            </div>
-
-            {/* رسائل التفاعل (جميناي/المنطق المحلي) */}
-            {selectedAnswer === 1 && <p style={{ color: '#f87171', marginTop: '25px', fontWeight: 'bold' }}>❌ ناقصة شوية يا بطل.. جرب "أروح"!</p>}
-            {selectedAnswer === 2 && <p style={{ color: '#4ade80', marginTop: '25px', fontWeight: 'bold', fontSize: '20px' }}>🏰 أحسنت يا بطل النيل! إجابة ملكية صحيحة</p>}
+      {/* محتوى التحديات الملكي */}
+      {activeTab === 'challenges' && (
+        <div className="max-w-2xl mx-auto bg-[#0a0f1a] p-10 rounded-[3rem] border-2 border-amber-500/10 shadow-2xl text-center">
+          <h2 className="text-2xl font-bold mb-6 italic underline decoration-amber-500">تحدي ميدان التحرير 🚕</h2>
+          <p className="text-xl mb-8 font-medium">"أنا عايز اروح ميدان التحرير"</p>
+          <div className="grid gap-4">
+            <button onClick={() => handleChallenge(false)} className="p-5 bg-slate-800 rounded-2xl hover:bg-slate-700 transition-all font-bold italic">1. انا عايز الفندق</button>
+            <button onClick={() => handleChallenge(true)} className="p-5 bg-amber-500 text-black rounded-2xl hover:scale-105 transition-all font-black">2. انا عايز اروح الفندق</button>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* قسم الدروس - جاري الربط بجميناي */}
-        {view === 'lessons' && (
-          <div style={{ textAlign: 'center', padding: '60px', backgroundColor: '#0f172a', borderRadius: '35px', border: '1px solid rgba(255,255,255,0.05)' }}>
-            <h2 style={{ fontSize: '36px', margin: '0 0 20px 0' }}>قاعة الدروس</h2>
-            <p style={{ color: '#f59e0b', fontSize: '18px' }}>جاري ربط "رحلة نفرتيتي" بذكاء جميناي المباشر.. 🤖</p>
-            <div style={{ width: '100%', height: '6px', background: '#1e293b', borderRadius: '10px', marginTop: '40px', overflow: 'hidden' }}>
-              <div style={{ width: '90%', height: '100%', background: 'linear-gradient(to right, #f59e0b, #fbbf24)', animation: 'pulse 2s infinite' }}></div>
-            </div>
-          </div>
-        )}
-      </main>
-
-      <style jsx>{`
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
-      `}</style>
+      {/* محتوى الدروس - نظام الدردشة المبدئي */}
+      {activeTab === 'lessons' && (
+        <div className="max-w-3xl mx-auto bg-[#0a0f1a] p-12 rounded-[3rem] border border-white/5 text-center">
+           <h2 className="text-3xl font-black mb-4">قاعة الدروس الملكية</h2>
+           <p className="text-amber-500 font-bold animate-pulse">يتم الآن ربط "رحلة نفرتيتي" المحدثة بذكاء جميناي... 🤖</p>
+           <div className="mt-10 p-6 bg-white/5 rounded-2xl border border-white/5 italic text-slate-400">
+             "اللغة هي مرآة الروح، وعندما تتعلمي المصرية برقي، فأنتِ تعكسين للعالم جمال جوهركِ وثقافتكِ"
+           </div>
+        </div>
+      )}
     </div>
   );
 }
