@@ -1,8 +1,5 @@
-import './globals.css'
-
 export const metadata = {
-  title: 'أكاديمية يالا مصري الملكية',
-  description: 'إعداد الملكة نفرتيتي',
+  title: 'Yalla Masry Academy',
 }
 
 export default function RootLayout({
@@ -12,7 +9,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ar" dir="rtl">
-      <body>{children}</body>
+      <body style={{ margin: 0, padding: 0, background: '#050a15' }}>
+        {children}
+      </body>
     </html>
   )
 }
